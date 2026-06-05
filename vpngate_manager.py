@@ -2266,7 +2266,6 @@ INDEX_HTML = r"""<!doctype html>
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      min-width: 1330px;
       table-layout: fixed;
     }
 
@@ -2678,15 +2677,12 @@ INDEX_HTML = r"""<!doctype html>
       <table>
         <thead>
           <tr>
-            <th style="width: 110px;">状态</th>
-            <th style="width: 100px;">延迟</th>
+            <th style="width: 90px;">状态</th>
             <th style="width: 220px;">IP 地址 : 端口</th>
-            <th style="width: 180px;">物理位置</th>
-            <th style="width: 100px;">ASN</th>
-            <th style="width: 240px;">运营主体 / ISP</th>
-            <th style="width: 110px;">网络质量</th>
+            <th>物理位置</th>
+            <th>运营主体 / ISP</th>
             <th style="width: 110px;">IP 类型</th>
-            <th style="width: 160px;">操作</th>
+            <th style="width: 100px;">操作</th>
           </tr>
         </thead>
         <tbody id="rows"></tbody>
@@ -3318,12 +3314,9 @@ function render(){
       
       return `<tr ${rowClass}>
         <td><span class="badge ${badgeClass}">${badgeText}</span></td>
-        <td>${latencyText}</td>
         <td class="mono" style="white-space: nowrap; max-width: 220px; overflow: hidden; text-overflow: ellipsis;" title="${esc(n.ip||n.remote_host)}:${n.remote_port||""}">${esc(n.ip||n.remote_host)}:${n.remote_port||""}</td>
-        <td style="white-space: nowrap; max-width: 180px; overflow: hidden; text-overflow: ellipsis;" title="${esc(displayLocation)}">${esc(displayLocation)}</td>
-        <td class="mono" style="font-size:12px; color:var(--text-secondary); white-space: nowrap; max-width: 100px; overflow: hidden; text-overflow: ellipsis;" title="${esc(n.asn||"-")}">${esc(n.asn||"-")}</td>
-        <td style="white-space: nowrap; max-width: 240px; overflow: hidden; text-overflow: ellipsis;" title="${esc(n.owner||n.as_name||"-")}">${esc(n.owner||n.as_name||"-")}</td>
-        <td style="white-space: nowrap; max-width: 110px; overflow: hidden; text-overflow: ellipsis;" title="${esc(translateQuality(n.quality))}">${esc(translateQuality(n.quality))}</td>
+        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${esc(displayLocation)}">${esc(displayLocation)}</td>
+        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${esc(n.owner||n.as_name||"-")}">${esc(n.owner||n.as_name||"-")}</td>
         <td style="white-space: nowrap; max-width: 110px; overflow: hidden; text-overflow: ellipsis;" title="${esc(translateIpType(n.ip_type))}">${esc(translateIpType(n.ip_type))}</td>
         <td>
           <div class="table-actions">
